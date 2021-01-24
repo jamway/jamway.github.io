@@ -11,17 +11,17 @@ jobs:
         
       - name: Get date
         id: date
-        run: echo "name=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+        run: echo "NOW::$(date +%Y-%m-%d)" >> $GITHUB_ENV
         
       - name: Create post
         uses: finnp/create-file-action@1.0.0
         env:
-          FILE_NAME: "docs/_posts/${{ steps.date.outputs.date }}-${{ github.run_number }}.md"
+          FILE_NAME: "docs/_posts/${{ env.NOW }}-${{ github.run_number }}.md"
           FILE_CONTENT: |
                         ---
                         layout: post
                         title:  "Release 0.${{ github.run_number }}"
-                        date:   ${{ steps.date.outputs.date }}
+                        date:   ${{ env.NOW }}
                         categories: release
                         ---
                         Test content
