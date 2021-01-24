@@ -1,26 +1,29 @@
 name: create-post
-on [release]: 
+
+on: [release]
+
 jobs:
-  build:
   make-a-new-post:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
       - name: Get date
         id: date
         run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+        
       - name: Create post
         uses: finnp/create-file-action@1.0.0
-            env:
-              FILE_NAME: "docs/_post/${{ steps.date.outputs.date }}-${{ github.run_number }}.md
-              FILE_CONTENT: |
-                            ---
-                            layout: post
-                            title:  "${{ github.run_number }}"
-                            date:   ${{ steps.date.outputs.date }}
-                            categories: release
-                            ---
+        env:
+          FILE_NAME: "docs/_post/${{ steps.date.outputs.date }}-${{ github.run_number }}.md"
+          FILE_CONTENT: |
+                        ---
+                        layout: post
+                        title:  "${{ github.run_number }}"
+                        date:   ${{ steps.date.outputs.date }}
+                        categories: release
+                        ---
       - run: git branch
       - run: ls
 
