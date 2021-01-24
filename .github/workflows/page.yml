@@ -18,6 +18,7 @@ jobs:
         env:
           FILE_NAME: "docs/_posts/${{ env.NOW }}-${{ github.run_number }}.md"
           FILE_CONTENT: |
+                        |
                         ---
                         layout: post
                         title:  "Release 0.${{ github.run_number }}"
