@@ -25,6 +25,11 @@ jobs:
                         categories: release
                         ---
                         Test content
-      - run: git checkout gh-pages && git commit -m "auto commit" && git push
-      - run: ls
-
+      - name: Commit to Github
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          # Optional but recommended
+          # Defaults to "Apply automatic changes"
+          commit_message: Auto commit new post
+          branch: gh-pages
+          file_pattern: docs/_posts/*.md
