@@ -17,15 +17,7 @@ jobs:
         uses: finnp/create-file-action@1.0.0
         env:
           FILE_NAME: "docs/_posts/${{ env.NOW }}-${{ github.run_number }}.md"
-          FILE_CONTENT: |
-                        |
-                        ---
-                        layout: post
-                        title:  "Release 0.${{ github.run_number }}"
-                        date:   ${{ env.NOW }}
-                        categories: release
-                        ---
-                        Test content
+          FILE_CONTENT: "---\nlayout: post\ntitle:  'Release 0.${{ github.run_number }}'\ndate:   ${{ env.NOW }}\ncategories: release\n---\nTest content"
       - name: Commit to Github
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
