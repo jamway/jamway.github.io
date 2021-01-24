@@ -25,6 +25,6 @@ jobs:
                         categories: release
                         ---
                         Test content
-      - run: git branch
+      - run: git checkout gh-pages && git commit -m "auto commit" && git push
       - run: ls
 
