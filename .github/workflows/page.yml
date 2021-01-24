@@ -19,15 +19,15 @@ jobs:
 #          FILE_NAME: "docs/_posts/${{ env.NOW }}-${{ github.run_number }}.md"
 #          FILE_CONTENT: "---\nlayout: post\ntitle:  'Release 0.${{ github.run_number }}'\ndate:   ${{ env.NOW }}\ncategories: release\n---\nTest content"
         run:  |
-              cat << EOF
-              ---
+              cat << 'EOF' >> docs/_posts/${{ env.NOW }}-${{ github.run_number }}.md
+               ---
                layout: post
                title:  'Release 0.${{ github.run_number }}'
                date:   ${{ env.NOW }}
                categories: release
                ---
                Test content
-               EOF) >> docs/_posts/${{ env.NOW }}-${{ github.run_number }}.md
+               EOF
       
            
       - name: Commit to Github
