@@ -33,4 +33,4 @@ jobs:
           commit_message: Auto commit new post
           branch: gh-pages
           file_pattern: docs/_posts/*.md
-          push_options: '--force'  
+          # push_options: '--force'  
