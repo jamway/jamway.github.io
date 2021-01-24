@@ -16,14 +16,15 @@ jobs:
       - name: Create post
         uses: finnp/create-file-action@1.0.0
         env:
-          FILE_NAME: "docs/_post/${{ steps.date.outputs.date }}-${{ github.run_number }}.md"
+          FILE_NAME: "/docs/_posts/${{ steps.date.outputs.date }}-${{ github.run_number }}.md"
           FILE_CONTENT: |
                         ---
                         layout: post
-                        title:  "${{ github.run_number }}"
+                        title:  "Release 0.${{ github.run_number }}"
                         date:   ${{ steps.date.outputs.date }}
                         categories: release
                         ---
+                        Test content
       - run: git branch
       - run: ls
 
